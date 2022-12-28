@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox  #para importar popup
 from random import choice, shuffle, randint
 import pyperclip
+import json
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -28,13 +29,19 @@ def save():
     website = website_entry.get() #para apanhar a informação digitada pelo usuário utilizamos o .get
     email = email_entry.get()
     password = password_entry.get()
+    new_dicio = {
+        website:{
+            "email": email,
+            "password":password,
+                    }
+                }
 
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title="Oops", message="Por favor, certifique-se de que não deixou nenhum campo em branco.") #para apresentar uma menssagem caso tenha campos em branco e não deixe salvar.
     
     else:    
-        with open("data.txt", "a") as data_file: #"a" refere-se a append que é acrescentar 
-            data_file.write(f"{website} | {email} | {password}\n")
+        with open("data.json", "w") as data_file: #"w" refere-se a write diferente do modo append do tipo .txt 
+            json.dump(new_dicio, data_file)  #modo .dump é utilizado para escrever no arquivo. ex json.dump(onde/como?, e quais dados?)
             website_entry.delete(0,END) #apaga oque foi digitado no campo do caracter 0 até o final. Para receber uma nova entrada sem que o usuário precise apagar.
             password_entry.delete(0,END)
             messagebox.showinfo(title="Password Manager", message="Salvo com sucesso.")  #para adionar popup informando o salvamento.
