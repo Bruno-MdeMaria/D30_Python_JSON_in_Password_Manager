@@ -39,12 +39,16 @@ def save():
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title="Oops", message="Por favor, certifique-se de que não deixou nenhum campo em branco.") #para apresentar uma menssagem caso tenha campos em branco e não deixe salvar.
     
-    else:    
-        with open("data.json", "r") as data_file: #"r" modo de leitura
+    else:
+        try:  #se não ter um arquivo data.json já criado temos a excepction para resolver.  
+            with open("data.json", "r") as data_file: #"r" modo de leitura
             
-            #LENDO OS DADOS GRAVADOS:
-            data = json.load(data_file)  #o modo .load é modo de leitura do ficheiro. Utilizamos para chamar os dados do arquivo json e utlizarmos como um dicioanrio python.
-           
+                #LENDO OS DADOS GRAVADOS:
+                data = json.load(data_file)  #o modo .load é modo de leitura do ficheiro. Utilizamos para chamar os dados do arquivo json e utlizarmos como um dicioanrio python.
+        except FileNotFoundError: #se encontrar a except descrita deve-se criar um novo arquivo:
+            with open("data.json", "w") as data_file:
+                json.dump(new_dicio, data_file, indent=4) #vide abaixo descrição deste modo.
+
             #ADICIONANDO NOS DADOS GRAVADOS OS NOVOS DADOS:
             data.update(new_dicio) #o modo json.update é como o append
         
