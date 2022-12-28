@@ -41,7 +41,7 @@ def save():
     
     else:    
         with open("data.json", "w") as data_file: #"w" refere-se a write diferente do modo append do tipo .txt 
-            json.dump(new_dicio, data_file)  #modo .dump é utilizado para escrever no arquivo. ex json.dump(onde/como?, e quais dados?)
+            json.dump(new_dicio, data_file, indent= 4)  #modo .dump é utilizado para escrever no arquivo. ex json.dump(onde/como?, e quais dados?, indent=numero de linhas?)
             website_entry.delete(0,END) #apaga oque foi digitado no campo do caracter 0 até o final. Para receber uma nova entrada sem que o usuário precise apagar.
             password_entry.delete(0,END)
             messagebox.showinfo(title="Password Manager", message="Salvo com sucesso.")  #para adionar popup informando o salvamento.
