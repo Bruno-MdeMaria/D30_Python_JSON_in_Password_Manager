@@ -45,17 +45,20 @@ def save():
             
                 #LENDO OS DADOS GRAVADOS:
                 data = json.load(data_file)  #o modo .load é modo de leitura do ficheiro. Utilizamos para chamar os dados do arquivo json e utlizarmos como um dicioanrio python.
+        
         except FileNotFoundError: #se encontrar a except descrita deve-se criar um novo arquivo:
             with open("data.json", "w") as data_file:
                 json.dump(new_dicio, data_file, indent=4) #vide abaixo descrição deste modo.
-
+        
+        else: #se o arquivo estiver já criado e não ter except:
             #ADICIONANDO NOS DADOS GRAVADOS OS NOVOS DADOS:
             data.update(new_dicio) #o modo json.update é como o append
         
-        with open("data.json", "w") as data_file: #"w" modo de escrita.
-            #GRAVANDO OS DADOS ATUALIZADOS:
-            json.dump(data, data_file, indent= 4)  #modo .dump é utilizado para escrever no arquivo. ex json.dump(onde/como?, e quais dados?, indent=numero de linhas? para melhor visualizar)
+            with open("data.json", "w") as data_file: #"w" modo de escrita.
+                #GRAVANDO OS DADOS ATUALIZADOS:
+                json.dump(data, data_file, indent= 4)  #modo .dump é utilizado para escrever no arquivo. ex json.dump(onde/como?, e quais dados?, indent=numero de linhas? para melhor visualizar)
             
+        finally: #ao final de tudo o código continuará aqui:
             website_entry.delete(0,END) #apaga oque foi digitado no campo do caracter 0 até o final. Para receber uma nova entrada sem que o usuário precise apagar.
             password_entry.delete(0,END)
             messagebox.showinfo(title="Password Manager", message="Salvo com sucesso.")  #para adionar popup informando o salvamento.
