@@ -32,16 +32,12 @@ def save():
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title="Oops", message="Por favor, certifique-se de que não deixou nenhum campo em branco.") #para apresentar uma menssagem caso tenha campos em branco e não deixe salvar.
     
-    else:  #e para não deixar continuar o código caso tenha campos em branco.
-        is_ok = messagebox.askokcancel(title= website, message= f"Esses são os dados inseridos: \nWebsite: {website} \nE-mail: {email} \nPassword: {password} \nVocê deseja salvar?") #adionar pup up de cancelamento ou não.
-        
-
-        if is_ok:
-            with open("data.txt", "a") as data_file: #"a" refere-se a append que é acrescentar 
-                data_file.write(f"{website} | {email} | {password}\n")
-                website_entry.delete(0,END) #apaga oque foi digitado no campo do caracter 0 até o final. Para receber uma nova entrada sem que o usuário precise apagar.
-                password_entry.delete(0,END)
-                messagebox.showinfo(title="Password Manager", message="Salvo com sucesso.")  #para adionar popup informando o salvamento.
+    else:    
+        with open("data.txt", "a") as data_file: #"a" refere-se a append que é acrescentar 
+            data_file.write(f"{website} | {email} | {password}\n")
+            website_entry.delete(0,END) #apaga oque foi digitado no campo do caracter 0 até o final. Para receber uma nova entrada sem que o usuário precise apagar.
+            password_entry.delete(0,END)
+            messagebox.showinfo(title="Password Manager", message="Salvo com sucesso.")  #para adionar popup informando o salvamento.
 
 
 # ---------------------------- UI SETUP ------------------------------- #
