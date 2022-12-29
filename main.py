@@ -66,7 +66,12 @@ def save():
 # ---------------------------- PROCURAR PASSWORD ------------------------------- #
 def procurar_password():
     website = website_entry.get() #vai pegar oq for escrito no imput de website para fazer a pesquisa.
-    with open 
+    with open("data.json") as data_file: #chamar o arquivo .json
+        data = json.load(data_file) #carregar o arquivo em uma variável
+        if website in data: #se o website escrito estiver em data(carregado com o arquivo .json);
+            email = data[website]["email"] #vai chamar o e-mail que está na varivel data[na chave conforme a variavel]e o valor [email conforme a posição da chave dentro do arquivo]
+            password = data[website]["password"] #vai buscar dentro do dicionario "data" o valor "password" que está na chave "website"
+            messagebox.showinfo(title=website, message=f"E-mail = {email}\nPassword = {password}")#chamar a caixa de mensagem com o titulo e a mensagem informando as variáveis que receberam as informações carregadas do dicionario que foi carregado do arquivo .json.
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -102,8 +107,8 @@ generate_password = Button(text="Generate Password", command=generate_password)
 generate_password.grid(row=3, column=2)
 add_button = Button(text="Add", width=44, command=save) #command para adicionar ação do botão
 add_button.grid(row=4, column=1, columnspan= 2)
-search_button = Button(text="Search", width=15)
-search_button.grid(row=1, column=2, command= procurar_password)
+search_button = Button(text="Search", width=15, command=procurar_password)
+search_button.grid(row=1, column=2)
 
 
 
