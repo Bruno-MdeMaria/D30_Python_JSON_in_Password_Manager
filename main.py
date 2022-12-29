@@ -72,10 +72,13 @@ def procurar_password():
     except FileNotFoundError:
         messagebox.showinfo(title="Erro", message="Não existe nenhuma informação salva na base de dados")
     else:
-            if website in data: #*se o website escrito estiver em data(carregado com o arquivo .json)*;
-                email = data[website]["email"] #vai chamar o e-mail que está na varivel data[na chave conforme a variavel]e o valor [email conforme a posição da chave dentro do arquivo]
-                password = data[website]["password"] #vai buscar dentro do dicionario "data" o valor "password" que está na chave "website"
-                messagebox.showinfo(title=website, message=f"E-mail = {email}\nPassword = {password}")#chamar a caixa de mensagem com o titulo e a mensagem informando as variáveis que receberam as informações carregadas do dicionario que foi carregado do arquivo .json.
+        if website in data: #*se o website escrito estiver em data(carregado com o arquivo .json)*;
+            email = data[website]["email"] #vai chamar o e-mail que está na varivel data[na chave conforme a variavel]e o valor [email conforme a posição da chave dentro do arquivo]
+            password = data[website]["password"] #vai buscar dentro do dicionario "data" o valor "password" que está na chave "website"
+            messagebox.showinfo(title=website, message=f"E-mail = {email}\nPassword = {password}")#chamar a caixa de mensagem com o titulo e a mensagem informando as variáveis que receberam as informações carregadas do dicionario que foi carregado do arquivo .json.
+        else:
+            messagebox.showinfo(title="Erro", message=f"Não existe nenhum passaword salvo para o {website}.")
+                
 
 
 # ---------------------------- UI SETUP ------------------------------- #
