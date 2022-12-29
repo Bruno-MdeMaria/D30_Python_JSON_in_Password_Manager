@@ -63,6 +63,11 @@ def save():
             password_entry.delete(0,END)
             messagebox.showinfo(title="Password Manager", message="Salvo com sucesso.")  #para adionar popup informando o salvamento.
 
+# ---------------------------- PROCURAR PASSWORD ------------------------------- #
+def procurar_password():
+    website = website_entry.get() #vai pegar oq for escrito no imput de website para fazer a pesquisa.
+    with open 
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -98,7 +103,7 @@ generate_password.grid(row=3, column=2)
 add_button = Button(text="Add", width=44, command=save) #command para adicionar ação do botão
 add_button.grid(row=4, column=1, columnspan= 2)
 search_button = Button(text="Search", width=15)
-search_button.grid(row=1, column=2)
+search_button.grid(row=1, column=2, command= procurar_password)
 
 
 
