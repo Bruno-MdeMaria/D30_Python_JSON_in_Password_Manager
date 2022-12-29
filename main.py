@@ -83,20 +83,23 @@ password_label = Label(text="Password:")
 password_label.grid(row=3, column=0)
 
 #ENTRADAS/Entrys:
-website_entry = Entry(width=52) #tamanho da janela do imput/entrada
-website_entry.grid(row=1, column=1, columnspan= 2)  #COLUMNSPAN= define até qual coluna vai a a linha
+website_entry = Entry(width=32) #tamanho da janela do imput/entrada
+website_entry.grid(row=1, column=1, columnspan= 1)  #COLUMNSPAN= define até qual coluna vai a a linha
 website_entry.focus()  #para cursor aparecer piscando dentro do campo de entrada de website
 email_entry = Entry(width=52)
 email_entry.grid(row=2, column=1, columnspan= 2)
 email_entry.insert(0, "brunomart@gmail.com") #quando inicia o programa oq está inserido nesse campo já aparece previamente(talvez a última informação atualizada)
-password_entry = Entry(width=34)
+password_entry = Entry(width=32)
 password_entry.grid(row=3, column=1)
 
 #Botoões/Buttons:
 generate_password = Button(text="Generate Password", command=generate_password)
 generate_password.grid(row=3, column=2)
-add_button = Button(text="Add", width=44, command=save) #command para adiconar ação do botão
+add_button = Button(text="Add", width=44, command=save) #command para adicionar ação do botão
 add_button.grid(row=4, column=1, columnspan= 2)
+search_button = Button(text="Search", width=15)
+search_button.grid(row=1, column=2)
+
 
 
 
